@@ -1,0 +1,18 @@
+[package]
+name = "crc"
+version = "0.1.0"
+edition = "2021"
+authors = ["Nikita Lozgachev <hello@lozgachev.dev>"]
+license = "MIT"
+description = "Create React Component"
+keywords = ["cli", "react"]
+categories = ["command-line-utilities"]
+readme = "README.md"
+
+[dependencies]
+clap = { version = "4.1.13", features = ["derive"] }
+
+
+
+
+

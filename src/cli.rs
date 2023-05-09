@@ -1,5 +1,4 @@
 pub use clap::Parser;
-use std::path::PathBuf;
 
 #[derive(Parser)]
 #[command(name = "crc")]
@@ -12,7 +11,7 @@ use std::path::PathBuf;
 
 pub struct Cli {
     #[arg(short, long, help = "Parent directory")]
-    pub path: PathBuf,
+    pub path: String,
     #[arg(value_name = "COMPONENT_NAME", help = "New component")]
     pub name: String,
 }

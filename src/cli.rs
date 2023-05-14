@@ -1,4 +1,4 @@
-pub use clap::Parser;
+use clap::Parser;
 
 #[derive(Parser)]
 #[command(name = "crc")]

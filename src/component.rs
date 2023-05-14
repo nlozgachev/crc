@@ -21,7 +21,7 @@ pub fn setup_component_contents(
         hmap.insert(k, replace_placeholder(&template, component_name));
     }
 
-    hmap
+    return hmap;
 }
 
 pub fn create_component(path_string: &str, component_name: &str) {

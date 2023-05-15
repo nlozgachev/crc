@@ -1,4 +1,4 @@
-use std::{collections::HashMap, fs, io::Write};
+use std::{collections::HashMap, fs, io::Write, process};
 
 use crate::component::create_component_hashmap;
 
@@ -18,12 +18,18 @@ impl ComponentFile {
 
 pub fn create_file(p: &String, contents: &String) {
     let mut file: fs::File = match fs::File::create(&p) {
-        Err(why) => panic!("Couldn't create {}: {}", p, why),
+        Err(why) => {
+            eprintln!("Couldn't create {}: {}", p, why);
+            process::exit(1);
+        }
         Ok(file) => file,
     };
 
     match file.write_all(contents.as_bytes()) {
-        Err(why) => panic!("Couldn't write to {}: {}", p, why),
+        Err(why) => {
+            eprintln!("Couldn't write to {}: {}", p, why);
+            process::exit(1);
+        }
         Ok(_) => println!("Successfully created {}", p),
     }
 }
@@ -50,7 +56,10 @@ pub fn get_new_file_paths(
             Some(path) => {
                 out.insert(k, ComponentFile::new(&path, contents));
             }
-            None => panic!("Couldn't find filepath for {}", k),
+            None => {
+                eprintln!("Couldn't find filepath for {}", k);
+                process::exit(1);
+            }
         }
     }
 
